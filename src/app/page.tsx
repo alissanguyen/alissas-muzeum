@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic"
 
-interface ImageResponse {
+export interface ImageResponse {
   id: number;
   name: string;
   url: string;
@@ -27,20 +27,7 @@ function Images({ images }: { images: ImageResponse[] }) { // Correct the type a
 }
 export default async function HomePage() {
 
-  /**
-   * The function (model, { desc }) => desc(model.id) is a callback function 
-   * passed to orderBy. Here, model represents each image record and { desc } 
-   * is a destructured object that contains sorting functions. The desc 
-   * function is used to sort in descending order.
-   * The desc function comes from the Prisma Client API. Prisma provides asc 
-   * and desc functions for ascending and descending sorting respectively. 
-   * In this case, desc(model.id) means "sort by the id field of the model 
-   * in descending order".
-   */
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id)
-  });
-
+  const images = await getMyImages()
 
   return (
     <main className="p-10 w-full">
