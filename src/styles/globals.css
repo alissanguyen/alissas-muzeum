@@ -5,3 +5,8 @@
 body {
     @apply bg-black/90 text-white
 }
+
+
+img {
+    @apply w-full h-full object-cover
+}

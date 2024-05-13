@@ -19,17 +19,7 @@ function Images({ images }: { images: ImageResponse[] }) { // Correct the type a
     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
       {images.map((image) =>
         <div className="mx-auto text-center flex flex-col" key={image.id}>
-          <img src={image.url} alt="" className="w-full" />
-          <span>{image.name}</span>
-        </div>)}
-      {images.map((image) =>
-        <div className="mx-auto text-center flex flex-col" key={image.id}>
-          <img src={image.url} alt="" className="w-full" />
-          <span>{image.name}</span>
-        </div>)}
-      {images.map((image) =>
-        <div className="mx-auto text-center flex flex-col" key={image.id}>
-          <img src={image.url} alt="" className="w-full" />
+          <img src={image.url} alt="" />
           <span>{image.name}</span>
         </div>)}
     </div>
@@ -51,9 +41,6 @@ export default async function HomePage() {
     orderBy: (model, { desc }) => desc(model.id)
   });
 
-
-
-  console.log(images)
 
   return (
     <main className="p-10 w-full">

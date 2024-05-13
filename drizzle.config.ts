@@ -8,5 +8,9 @@ export default {
   dbCredentials: {
     url: env.POSTGRES_URL,
   },
+  verbose: true,
   tablesFilter: ["alissasmuzeum_*"],
 } satisfies Config;
+
+
+ 
