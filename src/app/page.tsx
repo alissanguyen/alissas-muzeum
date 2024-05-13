@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Image from "next/image";
 import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic"
@@ -16,10 +16,10 @@ export interface ImageResponse {
 
 function Images({ images }: { images: ImageResponse[] }) { // Correct the type annotation for the images parameter
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full justify-center">
       {images.map((image) =>
         <div className="mx-auto text-center flex flex-col" key={image.id}>
-          <img src={image.url} alt="" />
+          <Image src={image.url} alt="" height={800} width={600} />
           <span>{image.name}</span>
         </div>)}
     </div>
