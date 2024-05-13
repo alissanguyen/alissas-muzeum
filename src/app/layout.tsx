@@ -1,7 +1,7 @@
-import "~/styles/globals.css";
-
+import { ClerkProvider } from '@clerk/nextjs';
 import { GeistSans } from "geist/font/sans";
-import NavBar from "~/components/NavBar";
+import NavBar from "~/app/_components/topnav";
+import "~/styles/globals.css";
 
 export const metadata = {
   title: "Create T3 App",
@@ -16,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="w-full">
-        <NavBar/>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body className="w-full">
+          <NavBar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
