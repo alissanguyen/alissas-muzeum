@@ -24,7 +24,7 @@ function Images({ images }: { images: ImageResponse[] }) { // Correct the type a
       {images.map((image) =>
         <div className="mx-auto text-center flex flex-col" key={image.id}>
           <Link href={`/img/${image.id}`} className="w-full h-full">
-            <Image src={image.url} alt="" height={800} width={600} className="Image"/>
+            <Image src={image.url} alt="" height={800} width={600} className="Image rounded-xl"/>
           </Link>
           <span>{image.name}</span>
 

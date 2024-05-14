@@ -2,13 +2,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import { SignInButton, SignOutButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import * as React from 'react';
-import { UploadButton } from '~/utils/uploadthing';
+// import { UploadButton } from '~/utils/uploadthing';
+import SimpleUploadButton from './simple-upload-button';
 
 
 const NavBar: React.FC = ({ }) => {
-    const router = useRouter()
 
     return (
         <nav className="nav flex w-full flex-row justify-between items-center py-4 px-10 font-semibold border-b-2 border-cyan-400/60">
@@ -19,7 +18,8 @@ const NavBar: React.FC = ({ }) => {
                     <SignInButton />
                 </SignedOut>
                 <SignedIn>
-                    <UploadButton endpoint="imageUploader" onClientUploadComplete={() => { router.refresh() }} />
+                    <SimpleUploadButton />
+                    {/* <UploadButton endpoint="imageUploader" onClientUploadComplete={() => { router.refresh() }} /> */}
                     <UserButton />
                     <SignOutButton />
                 </SignedIn>
