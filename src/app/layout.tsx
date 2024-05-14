@@ -6,6 +6,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from 'uploadthing/server';
 import { ourFileRouter } from './api/uploadthing/core';
 import { Toaster } from 'sonner';
+import { CSPostHogProvider } from './_analytics/provider';
 
 export const metadata = {
   title: "Create T3 App",
@@ -24,30 +25,31 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <NextSSRPlugin
-          /**
-           * The `extractRouterConfig` will extract **only** the route configs
-           * from the router to prevent additional information from being
-           * leaked to the client. The data passed to the client is the same
-           * as if you were to fetch `/api/uploadthing` directly.
-           */
-          routerConfig={extractRouterConfig(ourFileRouter)}
-        />
-        <body className={`dark w-full`}>
+      <CSPostHogProvider>
+        <html lang="en">
+          <NextSSRPlugin
+            /**
+             * The `extractRouterConfig` will extract **only** the route configs
+             * from the router to prevent additional information from being
+             * leaked to the client. The data passed to the client is the same
+             * as if you were to fetch `/api/uploadthing` directly.
+             */
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
+          <body className={`dark w-full`}>
 
-          <div className="grid h-screen grid-rows-[auto,1fr]">
-            <NavBar />
-            <main className='overflow-y-scroll'>{children}</main>
+            <div className="grid h-screen grid-rows-[auto,1fr]">
+              <NavBar />
+              <main className='overflow-y-scroll'>{children}</main>
 
-          </div>
-          {modal}
+            </div>
+            {modal}
 
-          <div id="modal-root" />
-          <Toaster/>
-        </body>
-      </html>
-
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider >
   );
 }

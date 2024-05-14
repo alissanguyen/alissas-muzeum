@@ -2,8 +2,8 @@
 
 import { useUploadThing } from "~/utils/uploadthing";
 import { useRouter } from 'next/navigation';
-import { Spinner } from '@chakra-ui/react'
 import { toast } from "sonner"
+import { usePostHog } from "posthog-js/react";
 
 
 
@@ -36,8 +36,11 @@ const useUploadThingInputProps = (...args: Input) => {
 export default function SimpleUploadButton() {
     const router = useRouter();
 
+    const posthog = usePostHog();
+
     const { inputProps, isUploading } = useUploadThingInputProps("imageUploader", {
         onUploadBegin() {
+            posthog.capture('upload_begin');
             toast("Uploading image(s)...", {
                 duration: 100000,
                 id: 'upload-begin'
@@ -54,7 +57,6 @@ export default function SimpleUploadButton() {
         <div>
             {
                 isUploading ?
-                    // <Spinner size='xl' thickness='4px' speed='0.65s' color='blue.500' className="w-6 h-6" />
                     <SVGSpinner />
                     : <label htmlFor="upload-button" className="hover:text-cyan-400 ease-in-out duration-150">Upload</label>
             }
