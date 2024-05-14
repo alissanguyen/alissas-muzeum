@@ -19,7 +19,7 @@ export interface ImageResponse {
 
 function Images({ images }: { images: ImageResponse[] }) { // Correct the type annotation for the images parameter
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full justify-center">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full justify-center p-10 pb-20">
 
       {images.map((image) =>
         <div className="mx-auto text-center flex flex-col" key={image.id}>

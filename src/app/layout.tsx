@@ -34,12 +34,16 @@ export default function RootLayout({
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
         <body className={`dark w-full`}>
+
           <div className="grid h-screen grid-rows-[auto,1fr]">
             <NavBar />
-            <main className="overflow-y-scroll">{children}</main>
-            {modal}
-            <div id="modal-root" />
+            <main className='overflow-y-scroll'>{children}</main>
+
           </div>
+          {modal}
+
+          <div id="modal-root" />
+
         </body>
       </html>
 
