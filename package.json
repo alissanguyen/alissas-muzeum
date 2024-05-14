@@ -9,12 +9,13 @@
     "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
     "db:introspect": "drizzle-kit introspect",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.0.8",
+    "@sentry/nextjs": "^7.105.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@uploadthing/react": "^6.5.3",
     "@vercel/postgres": "^0.8.0",
