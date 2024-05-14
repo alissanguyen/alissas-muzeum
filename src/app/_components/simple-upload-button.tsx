@@ -54,10 +54,20 @@ export default function SimpleUploadButton() {
         <div>
             {
                 isUploading ?
-                    <Spinner size='xl' thickness='4px' speed='0.65s' color='blue.500' className="w-6 h-6" /> :
-                    <label htmlFor="upload-button" className="hover:text-cyan-400 ease-in-out duration-150">Upload</label>
+                    // <Spinner size='xl' thickness='4px' speed='0.65s' color='blue.500' className="w-6 h-6" />
+                    <SVGSpinner />
+                    : <label htmlFor="upload-button" className="hover:text-cyan-400 ease-in-out duration-150">Upload</label>
             }
             <input id="upload-button" type="file" className="sr-only" {...inputProps}></input>
         </div>
     )
+}
+
+function SVGSpinner() {
+    return (
+        <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="text-white">
+            <circle className="spinner_nOfF" cx="4" cy="12" r="3" /><circle className="spinner_nOfF spinner_fVhf" cx="4" cy="12" r="3" />
+            <circle className="spinner_nOfF spinner_piVe" cx="4" cy="12" r="3" /><circle className="spinner_nOfF spinner_MSNs" cx="4" cy="12" r="3" /></svg>
+    )
+
 }
