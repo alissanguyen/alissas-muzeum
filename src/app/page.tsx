@@ -1,5 +1,6 @@
 
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 import { getMyImages } from "~/server/queries";
@@ -35,6 +36,10 @@ function Images({ images }: { images: ImageResponse[] }) { // Correct the type a
 }
 export default async function HomePage() {
 
+  const user = auth()
+  if (!user.userId) {
+    return <p>Please sign in above</p>
+  }
   const images = await getMyImages()
 
   return (
