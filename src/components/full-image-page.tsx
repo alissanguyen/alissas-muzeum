@@ -14,7 +14,7 @@ export default async function FullPageImageView(props: { id: number }) {
     return (
         <div className="flex w-full h-full p-10">
             <div className="flex max-w-screen-xl mx-auto h-full bg-slate-50 p-20 gap-10 rounded-xl">
-                <Image src={image.url} alt={image.name} width={800} height={1200} className="max-w-[1/2] rounded-lg object-contain" />
+                <Image src={image.url} alt={image.name} width={800} height={1200} className="h-full w-fit rounded-lg object-contain" />
                 <div className="flex flex-col gap-3">
                     <p className="text-2xl text-black font-semibold">{image.name}</p>
                     <div className="flex flex-row items-center gap-2 text-slate-800">
