@@ -2,7 +2,6 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { deleteImage, getImageById } from "~/server/queries";
 import { Button } from "../components/ui/button"
 import Image from "next/image";
-import { toast } from "sonner";
 
 export default async function FullPageImageView(props: { id: number }) {
 
